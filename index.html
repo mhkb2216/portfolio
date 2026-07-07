@@ -549,7 +549,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   }
 
   /* Real visitor count from GoatCounter public counter. Stays hidden unless real data loads. */
-  fetch('https://mhkb2216.goatcounter.com/counter//.json')
+  fetch('https://humayun.goatcounter.com/counter//.json')
     .then(function(r){ if (!r.ok) throw 0; return r.json(); })
     .then(function(d){
       var n = parseInt(String(d.count).replace(/\D/g,''), 10);
@@ -599,6 +599,6 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 })();
 </script>
 
-<script data-goatcounter="https://mhkb2216.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://humayun.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
