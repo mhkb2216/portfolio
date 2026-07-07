@@ -5,14 +5,15 @@
   ============================================================
   HOW TO EDIT THIS FILE (for Humayun)
   Everything is in this one file. Search for these markers:
-    EDIT-STATS    the numbers in the stat strip
-    EDIT-PROJECTS the project cards
-    EDIT-CHIPS    the skill chips
-    EDIT-LINKS    your email, LinkedIn, GitHub
-    EDIT-RESUME   the single Download resume button (hero)
-    EDIT-COLORS   the whole color scheme (top of the styles)
-    EDIT-ANALYTICS  GC_CODE + FIREBASE_CONFIG in the script
-                  (visitor count + "viewing now")
+    EDIT-STATS      the numbers in the stat strip
+    EDIT-PROJECTS   the project cards
+    EDIT-CHIPS      the skill chips
+    EDIT-LINKS      your email, LinkedIn, GitHub
+    EDIT-RESUME     the single Download resume button (hero)
+    EDIT-COLORS     the whole color scheme (top of the styles)
+    EDIT-VISITS     the live visitor counter in the footer
+    EDIT-ANALYTICS  GC_CODE in the script + the GoatCounter
+                    tag at the very bottom of the page
   To edit on GitHub: open the repo, click index.html,
   click the pencil icon, change, commit. Live in a minute.
   ============================================================
@@ -22,18 +23,18 @@
 <meta name="theme-color" content="#0B121C">
 <meta name="color-scheme" content="dark">
 <title>Humayun Khan · Cloud Engineer Portfolio</title>
-<meta name="description" content="Computer science student at SZABIST Karachi building secure, cost-efficient systems on AWS. Live projects in cloud security, global delivery and cost control. AWS Cloud Practitioner in progress.">
+<meta name="description" content="Computer science student at SZABIST Karachi building secure, cost efficient cloud systems. Live projects in cloud security, global content delivery and cost control, built on AWS today with principles that transfer to any cloud platform.">
 <meta name="author" content="Humayun Khan">
 <link rel="canonical" href="https://humayun-khan.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Humayun Khan">
 <meta property="og:url" content="https://humayun-khan.com/">
 <meta property="og:title" content="Humayun Khan · Cloud Engineer Portfolio">
-<meta property="og:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control. AWS Cloud Practitioner in progress.">
+<meta property="og:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control, on AWS today and transferable to any platform.">
 <meta property="og:image" content="https://humayun-khan.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Humayun Khan · Cloud Engineer Portfolio">
-<meta name="twitter:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control. AWS Cloud Practitioner in progress.">
+<meta name="twitter:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control, on AWS today and transferable to any platform.">
 <meta name="twitter:image" content="https://humayun-khan.com/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B121C'/%3E%3Cpath d='M9 23V9h3.4v5.4h7.2V9H23v14h-3.4v-5.6h-7.2V23Z' fill='%23FF9900'/%3E%3C/svg%3E">
 <link rel="preload" as="image" href="photo.jpg">
@@ -66,6 +67,7 @@ html{scroll-behavior:smooth;color-scheme:dark}
 body{background:var(--bg);color:var(--text);font-family:var(--font-display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;animation:pagein .5s var(--ease)}
 @keyframes pagein{from{opacity:0}to{opacity:1}}
 a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
 ::selection{background:var(--accent);color:var(--cta-text)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 #top:focus{outline:none}
@@ -118,7 +120,7 @@ header.scrolled{box-shadow:0 12px 32px rgba(0,0,0,.35)}
    so the layout can never open up a blank gap on any device */
 .hero{position:relative;overflow:hidden;padding:var(--s4) var(--s3) var(--s5);min-height:0}
 .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(233,238,245,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
-.glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.14),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);left:70%;top:30%;will-change:left,top}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.14),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);left:70%;top:30%;will-change:left,top;animation:drift 18s ease-in-out infinite alternate-reverse}
 .hero>*{position:relative;z-index:1}
 .glow2{position:absolute;width:440px;height:440px;left:12%;top:74%;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.08),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);animation:drift 16s ease-in-out infinite alternate;z-index:0}
 @keyframes drift{from{transform:translate(-50%,-50%)}to{transform:translate(calc(-50% + 70px),calc(-50% - 50px))}}
@@ -168,37 +170,33 @@ h1{font-size:clamp(2.3rem,6.4vw,4.2rem);font-weight:900;letter-spacing:-.03em;li
   .term-panel{margin-top:var(--s4)}
 }
 
-/* Live status terminal: fills the top of the page with real systems */
+/* Live status terminal: fills the top of the page with real systems,
+   and "runs" the command when it scrolls into view. The whole body is
+   one shared grid and every column sizes itself to its own content,
+   so the name, the pipeline and the state can never overlap on any
+   screen. If a phone screen is narrower than the content, the panel
+   scrolls sideways instead of squashing the text together. */
 .term-panel{margin-top:var(--s5);border:1px solid var(--border);border-radius:var(--r-lg);background:#0A101A;overflow:hidden;box-shadow:var(--shadow-card)}
 .term-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
 .tdot{width:10px;height:10px;border-radius:50%;background:rgba(233,238,245,.16)}
 .tdot:first-child{background:rgba(255,153,0,.75)}
 .term-title{margin-left:8px;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted)}
-.term-body{padding:var(--s3);font-family:var(--font-mono);font-size:.83rem;line-height:2.1;overflow-x:auto}
-.tline{
-  display:grid;
-  grid-template-columns:50px 230px 1fr auto;
-  column-gap:28px;
-  align-items:baseline;
-  white-space:nowrap;
-  transition:opacity .35s var(--ease),transform .35s var(--ease);
-}
-.term-panel.animating .tline{opacity:0;transform:translateX(-8px)}
-.term-panel.animating .tline.on{opacity:1;transform:none}
-.tok{color:var(--ok);min-width:24px}
-.tname{color:var(--text);}
+.term-body{padding:var(--s3);font-family:var(--font-mono);font-size:.83rem;line-height:2.1;overflow-x:auto;display:grid;grid-template-columns:max-content max-content minmax(max-content,1fr) max-content;column-gap:26px;align-items:baseline}
+.tline{display:contents}
+.tline>*{white-space:nowrap;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.tline.tcmd{grid-column:1/-1;display:flex;gap:12px;align-items:baseline}
+.term-panel.animating .tline>*{opacity:0;transform:translateX(-8px)}
+.term-panel.animating .tline.on>*{opacity:1;transform:none}
+.tok{color:var(--ok)}
+.tname{color:var(--text)}
 .tdim{color:var(--muted);opacity:.85}
-.tstate{color:var(--accent);letter-spacing:.06em}
+.tstate{color:var(--accent);letter-spacing:.06em;justify-self:end}
 .tcmd .tcmd-text{color:var(--text)}
 @media(max-width:640px){
   .term-body{
-    font-size:.75rem;
-    line-height:1.95;
+    font-size:.73rem;
+    line-height:2;
     padding:var(--s2) var(--s3);
-  }
-
-  .tline{
-    grid-template-columns:40px 150px 1fr auto;
     column-gap:14px;
   }
 }
@@ -212,13 +210,11 @@ h1{font-size:clamp(2.3rem,6.4vw,4.2rem);font-weight:900;letter-spacing:-.03em;li
 .stat b{display:block;font-size:2rem;font-weight:900;letter-spacing:-.02em;color:var(--text);transition:color .25s var(--ease)}
 .stat:hover b{color:var(--accent)}
 .stat .label{font-size:.7rem}
-.live-now{display:block;margin-top:4px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;color:var(--ok)}
 @media(max-width:860px){
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat{border-left:none!important;border-top:1px solid var(--border)}
   .stat:nth-child(even){border-left:1px solid var(--border)!important}
   .stat:nth-child(-n+2){border-top:none}
-  .stat-visits{grid-column:1/-1;border-left:none!important;border-top:1px solid var(--border)!important}
 }
 
 /* Ribbon */
@@ -240,6 +236,11 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .section-head.in .icon{animation:iconpop .55s var(--ease) .08s both}
 @keyframes iconpop{0%{opacity:0;transform:scale(.5) rotate(-10deg)}70%{opacity:1;transform:scale(1.08) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 
+/* Extra breathing room requested before these two headings:
+   one clear line of space above "Cloud projects" and "Why hire me" */
+#projects{padding-top:calc(var(--s6) + var(--s4))}
+#why{padding-top:calc(var(--s6) + var(--s4))}
+
 /* Projects  EDIT-PROJECTS in the HTML below */
 .project{position:relative;padding:var(--s5) var(--s2);border-top:1px solid var(--border);border-radius:var(--r-md);transition:background .3s ease}
 .project::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:3px;border-radius:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease)}
@@ -259,7 +260,7 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .project p{max-width:60ch;color:var(--muted)}
 
 /* Why hire me proof grid */
-.lead{color:var(--muted);font-size:1.08rem;margin:-24px 0 var(--s5);max-width:50ch}
+.lead{color:var(--muted);font-size:1.08rem;margin:-24px 0 var(--s5);max-width:52ch}
 .proof{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3)}
 .proof-card{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s4);position:relative;overflow:hidden;transition:transform var(--dur-med) var(--ease),opacity var(--dur-slow) var(--ease),border-color var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease)}
 .proof-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .25s;z-index:2}
@@ -281,15 +282,18 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:var(--s5)}
 .chip{font-family:var(--font-mono);font-size:.8rem;padding:8px 14px;border:1px solid var(--border);border-radius:var(--r-pill);background:var(--surface);color:var(--text);transition:border-color .2s,transform .2s}
 .chip:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 5px 16px rgba(255,153,0,.18)}
+.chip-travel{border-style:dashed;border-color:rgba(255,153,0,.35);color:var(--text)}
 @keyframes chipin{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:none}}
 .reveal.in .chip{animation:chipin .5s var(--ease) calc(var(--d,0)*1ms) backwards}
 
 #education{margin-top:var(--s4)}
 #skills{margin-top:var(--s4)}
 #experience{margin-top:var(--s4)}
-.skill-groups{display:grid;gap:var(--s3);margin-bottom:var(--s5)}
+.skill-groups{display:grid;gap:var(--s3);margin-bottom:var(--s3)}
 .skill-group .label{display:block;margin-bottom:10px}
 .skill-group .chips{margin-bottom:0}
+.skill-note{color:var(--muted);font-size:.95rem;max-width:62ch;margin-bottom:var(--s5)}
+.skill-note strong{color:var(--text);font-weight:600}
 /* Rows, experience, education */
 .row{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding:var(--s4) 0;border-top:1px solid var(--border);flex-wrap:wrap;transition:background .3s var(--ease)}
 .row:hover{background:linear-gradient(90deg,var(--surface),transparent 75%)}
@@ -305,12 +309,29 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .xp li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--font-mono);transition:transform .25s var(--ease)}
 .xp li:hover::before{transform:translateX(4px)}
 
+/* Touch-device animations: phones and tablets have no hover, so the
+   same highlights play automatically as each element scrolls into
+   view instead of waiting for a mouse that never comes */
+@media(hover:none){
+  .project.in .flow .step{animation:steplight 1.5s var(--ease) both}
+  .project.in .flow .step:nth-child(3){animation-delay:.28s}
+  .project.in .flow .step:nth-child(5){animation-delay:.56s}
+  .project.in .flow .step:nth-child(7){animation-delay:.84s}
+  .proof-card.in .proof-ic{border-color:rgba(255,153,0,.45)}
+  .proof-card.in .proof-ic svg{animation:wiggle .55s var(--ease) .35s}
+  .proof-card.in::before{opacity:1}
+  .row.in .pill{animation:pillpop .55s var(--ease) .45s both}
+  .stat.in::after{transform:scaleX(1);transition-delay:.3s}
+}
+@keyframes steplight{0%,100%{color:var(--muted)}45%{color:var(--accent)}}
+@keyframes pillpop{0%{transform:scale(1)}55%{transform:scale(1.1)}100%{transform:scale(1)}}
+
 /* Closing / contact */
 .closing{text-align:center;padding:var(--s7) 0}
 .closing h2{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:900;letter-spacing:-.03em;margin-bottom:var(--s2);
    background:linear-gradient(100deg,var(--text) 0%,var(--text) 42%,var(--accent) 50%,var(--text) 58%,var(--text) 100%);
    background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s ease-in-out infinite}
-.closing p{color:var(--muted);max-width:44ch;margin:0 auto var(--s4)}
+.closing p{color:var(--muted);max-width:46ch;margin:0 auto var(--s4)}
 .closing .hero-actions{justify-content:center;margin-top:0}
 
 .to-top{position:fixed;right:22px;bottom:22px;z-index:15;width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--accent);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s,border-color .2s,box-shadow .2s}
@@ -318,9 +339,29 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .to-top:hover{border-color:var(--accent);box-shadow:var(--shadow-glow)}
 @media(max-width:640px){.to-top{right:16px;bottom:16px;width:42px;height:42px}}
 
+/* Footer with the live visitor counter  EDIT-VISITS */
 footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
-.foot-main{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s4);flex-wrap:wrap}
-.foot-tag{color:var(--muted);font-size:.95rem;margin-top:6px;max-width:34ch}
+.foot-main{display:flex;justify-content:space-between;align-items:stretch;gap:var(--s4);flex-wrap:wrap}
+.visitor-panel{flex:1 1 320px;max-width:460px;position:relative;border:1px solid var(--border);border-radius:var(--r-lg);background:linear-gradient(140deg,var(--surface),rgba(255,153,0,.045));padding:var(--s3) var(--s4);overflow:hidden;transition:border-color var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease)}
+.visitor-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55}
+.visitor-panel::after{content:"";position:absolute;width:220px;height:220px;right:-70px;bottom:-110px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.10),transparent 65%);pointer-events:none}
+.visitor-panel:hover{border-color:rgba(255,153,0,.45);box-shadow:var(--shadow-card)}
+.visitor-panel>*{position:relative;z-index:1}
+.vp-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.vp-dot{position:relative;flex:none;width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.vp-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(74,222,128,.55);animation:pulse 2.2s ease-out infinite}
+.vp-count{display:flex;align-items:baseline;gap:12px;margin:2px 0 10px;flex-wrap:wrap}
+.vp-count b{font-size:2.6rem;font-weight:900;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;
+   background:linear-gradient(100deg,var(--text) 20%,var(--accent) 140%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.vp-unit{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.vp-sub{display:flex;flex-wrap:wrap;margin:0 0 12px}
+.vp-mini{display:flex;flex-direction:column;padding-right:var(--s3);margin-right:var(--s3);border-right:1px solid var(--border)}
+.vp-mini:last-child{border-right:0;margin-right:0;padding-right:0}
+.vp-mini b{font-size:1.1rem;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;line-height:1.4}
+.vp-mini span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.vp-note{display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;line-height:1.7;color:var(--muted)}
+.vp-note .hl{color:var(--accent)}
+@media(max-width:720px){.visitor-panel{max-width:none;width:100%}.foot-links{width:100%}}
 .foot-links{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center}
 .foot-links a{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:inline-block;transition:color .2s,transform .2s var(--ease)}
 .foot-links a:hover{color:var(--accent);transform:translateY(-2px)}
@@ -333,12 +374,13 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   .chip:hover{transform:none}
   .cursor{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
-  .flow .step{transition:none}
+  .flow .step{transition:none;animation:none!important}
   .glow,.hero::after{display:none}
   body{animation:none}
   .portrait img{animation:none}
   .portrait::after{animation:none}
   .status .dot::after{animation:none;display:none}
+  .vp-dot::after{animation:none;display:none}
   h1{animation:none;background:none;color:var(--text)}
   .section-head .icon{animation:none;opacity:1}
   .section-head h2::after{transition:none}
@@ -347,17 +389,18 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   .to-top{transition:none;transform:none}
   .glow2{display:none}
   .hero-text>*,.hero-text h1{animation:none}
-  .portrait::after{animation:none}
   .closing h2{animation:none;background:none;color:var(--text)}
-  .term-panel.animating .tline{opacity:1;transform:none}
+  .term-panel.animating .tline>*{opacity:1;transform:none}
   .row:hover .pill{transform:none}
+  .row.in .pill{animation:none}
   .xp:hover{transform:none}
   .foot-links a:hover{transform:none}
   .proof-card:hover .proof-ic svg{animation:none}
+  .proof-card.in .proof-ic svg{animation:none}
   .stat::after{transition:none}
 }
 </style>
-<noscript><style>.reveal,.section-head .icon,.tline{opacity:1!important;transform:none!important;animation:none!important}.section-head h2::after{width:100%}</style></noscript>
+<noscript><style>.reveal,.section-head .icon,.tline>*{opacity:1!important;transform:none!important;animation:none!important}.section-head h2::after{width:100%}</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -368,7 +411,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   "email": "mailto:mhkb2216@gmail.com",
   "sameAs": ["https://linkedin.com/in/mhkb2216", "https://github.com/mhkb2216"],
   "jobTitle": "Computer Science Student",
-  "knowsAbout": ["Cloud Security", "Serverless Architecture", "FinOps", "Cloud Operations", "AWS"],
+  "knowsAbout": ["Cloud Computing", "Cloud Security", "Serverless Architecture", "FinOps", "Cloud Operations", "AWS", "Content Delivery Networks", "Event Driven Architecture", "Cloud Cost Optimization"],
   "alumniOf": {"@type": "CollegeOrUniversity", "name": "SZABIST University Karachi"}
 }
 </script>
@@ -409,8 +452,8 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
       <div class="hero-text">
         <p class="term" aria-label="Humayun Khan builds cloud security, content delivery, cost control and serverless systems"><span class="prompt">humayun@cloud:~$</span> <span class="typed" id="typed">cloud security</span><span class="cursor">&#9615;</span></p>
         <h1>I build real things in the cloud.</h1>
-        <p>I am Humayun Khan, a computer science student who builds secure, cost efficient systems in the cloud. Everything below runs in a live AWS account, and the thinking behind it carries to any platform.</p>
-        <p class="status"><span class="dot" aria-hidden="true"></span>Open to entry-level cloud roles &#183; Karachi &#183; Remote</p>
+        <p>I am Humayun Khan, a computer science student who builds secure, cost efficient systems in the cloud. Everything below runs live on AWS today, and the ideas behind it, like least privilege, event driven automation, edge delivery and cost guardrails, work on any cloud platform.</p>
+        <p class="status"><span class="dot" aria-hidden="true"></span>Open to entry level cloud roles &#183; Karachi &#183; Remote</p>
         <!-- EDIT-RESUME: the one and only resume button lives here -->
         <div class="hero-actions">
           <a class="btn magnetic" href="#projects">Explore my work <span class="arr">&#8594;</span></a>
@@ -422,42 +465,32 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
       </div>
     </div>
 
-    <!-- Live status terminal: every line below is a real running system,
-         animated like a command being executed when the page loads -->
-    <div class="term-panel reveal" id="termPanel" role="img" aria-label="Status of my live AWS systems: root login alerts armed, document delivery CDN live, budget guard under one cent per month, AWS Cloud Practitioner in progress">
-      <div class="term-bar" aria-hidden="true"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="term-title">humayun@aws: ~/status</span></div>
+    <!-- Live status terminal: every line below is a real running system.
+         When this panel scrolls into view the command types itself out
+         and the systems report in one by one, on every device -->
+    <div class="term-panel reveal" id="termPanel" role="img" aria-label="Status of my live cloud systems: root login alerts armed, docs delivery cdn live, budget guard under one cent per month, this portfolio site live, AWS Cloud Practitioner in progress">
+      <div class="term-bar" aria-hidden="true"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="term-title">humayun@cloud: ~/status</span></div>
       <div class="term-body" aria-hidden="true">
-        <p class="tline tcmd"><span class="prompt">humayun@cloud:~$</span><span class="tcmd-text" id="tcmdText">check --all-systems</span><span class="cursor">&#9615;</span></p>
-        <p class="tline"><span class="tok">OK</span><span class="tname">root-login-alerts</span><span class="tdim">CloudTrail &#8594; EventBridge &#8594; SNS</span><span class="tstate">ARMED</span></p>
-        <p class="tline"><span class="tok">OK</span><span class="tname">docs-delivery-cdn</span><span class="tdim">S3 &#8594; CloudFront (OAC)</span><span class="tstate">LIVE</span></p>
-        <p class="tline"><span class="tok">OK</span><span class="tname">budget-guard</span><span class="tdim">AWS Budgets</span><span class="tstate">&lt;$0.01/MO</span></p>
-        <p class="tline"><span class="tok">&#8635;</span><span class="tname">cloud-practitioner</span><span class="tdim">AWS certification</span><span class="tstate">IN PROGRESS</span></p>
+        <p class="tline tcmd on"><span class="prompt">humayun@cloud:~$</span><span class="tcmd-text" id="tcmdText">check all systems</span><span class="cursor">&#9615;</span></p>
+        <p class="tline"><span class="tok">OK</span><span class="tname">root login alerts</span><span class="tdim">CloudTrail &#8594; EventBridge &#8594; SNS</span><span class="tstate">ARMED</span></p>
+        <p class="tline"><span class="tok">OK</span><span class="tname">docs delivery cdn</span><span class="tdim">S3 &#8594; CloudFront (OAC)</span><span class="tstate">LIVE</span></p>
+        <p class="tline"><span class="tok">OK</span><span class="tname">budget guard</span><span class="tdim">AWS Budgets</span><span class="tstate">&lt;$0.01/MO</span></p>
+        <p class="tline"><span class="tok">OK</span><span class="tname">portfolio site</span><span class="tdim">GitHub Pages &#183; live analytics</span><span class="tstate">LIVE</span></p>
+        <p class="tline"><span class="tok">&#8635;</span><span class="tname">cloud practitioner</span><span class="tdim">AWS certification</span><span class="tstate">IN PROGRESS</span></p>
       </div>
     </div>
 
     <!-- EDIT-STATS -->
-    <!--
-      VISITOR COUNTER (real data only, never faked)
-      Total visits comes from GoatCounter and appears as the last stat
-      tile once real data loads. Setup (see EDIT-ANALYTICS in the
-      script): set GC_CODE to your GoatCounter site code, then in the
-      GoatCounter dashboard open Settings and tick "Allow adding a
-      visitor counter on your website".
-      "Viewing right now" needs a realtime backend: paste a Firebase
-      Realtime Database config into FIREBASE_CONFIG in the script and
-      it lights up automatically. Until then it stays hidden.
-    -->
     <div class="stats" aria-label="Quick facts">
-      <div class="stat"><b><span class="count" data-to="2">0</span></b><span class="label">Cloud projects shipped</span></div>
-      <div class="stat"><b><span class="count" data-to="9">0</span>+</b><span class="label">Cloud services used</span></div>
-      <div class="stat"><b>&lt;$0.01</b><span class="label">Monthly spend on my pipeline</span></div>
-      <div class="stat"><b>2027</b><span class="label">Graduation year</span></div>
-      <div class="stat stat-visits" id="visitStat" hidden><b id="visitNum">0</b><span class="label">Portfolio visits</span><span class="live-now" id="liveNow" hidden aria-live="polite"></span></div>
+      <div class="stat reveal in"><b><span class="count" data-to="2">0</span></b><span class="label">Cloud projects shipped</span></div>
+      <div class="stat reveal in"><b><span class="count" data-to="9">0</span>+</b><span class="label">Cloud services used</span></div>
+      <div class="stat reveal in"><b>&lt;$0.01</b><span class="label">Monthly spend on my pipeline</span></div>
+      <div class="stat reveal in"><b>2027</b><span class="label">Graduation year</span></div>
     </div>
   </section>
 
   <div class="ribbon" aria-hidden="true">
-    <span>OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; JUNIOR CLOUD ENGINEER &#183; CLOUD OPERATIONS &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183; OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; JUNIOR CLOUD ENGINEER &#183; CLOUD OPERATIONS &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183;</span>
+    <span>OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; JUNIOR CLOUD ENGINEER &#183; CLOUD OPERATIONS &#183; MULTI CLOUD MINDSET &#183; BUILT ON AWS, READY FOR ANY CLOUD &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183; OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; JUNIOR CLOUD ENGINEER &#183; CLOUD OPERATIONS &#183; MULTI CLOUD MINDSET &#183; BUILT ON AWS, READY FOR ANY CLOUD &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183;</span>
   </div>
 
   <!-- ===== PROJECTS  EDIT-PROJECTS ===== -->
@@ -470,23 +503,23 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     <article class="project reveal">
       <h3>Real Time Root Login Alert System</h3>
       <span class="flow"><span class="step">CLOUDTRAIL</span> <span class="sep">&#8594;</span> <span class="step">EVENTBRIDGE</span> <span class="sep">&#8594;</span> <span class="step">SNS</span></span>
-      <p>A serverless security system that spots root account logins the moment they happen. CloudTrail tracks the login events, EventBridge matches the pattern, and SNS sends an instant email alert. No more manual checks.</p>
+      <p>A serverless security system that spots root account logins the moment they happen. CloudTrail tracks the login events, EventBridge matches the pattern, and SNS sends an instant email alert. No more manual checks. The same event driven pattern exists on every major cloud.</p>
     </article>
 
     <article class="project reveal">
       <h3>Secure Global Document Delivery Pipeline</h3>
       <span class="flow"><span class="step">S3</span> <span class="sep">&#8594;</span> <span class="step">CLOUDFRONT</span> <span class="sep">&#183;</span> <span class="step">S3 VERSIONING</span> <span class="sep">&#183;</span> <span class="step">AWS BUDGETS</span></span>
-      <p>A fast and secure content delivery network. Files live in S3 with public access blocked, served worldwide through CloudFront using Origin Access Control. S3 Versioning protects the files, and AWS Budgets keeps monthly spending under one cent.</p>
+      <p>A fast and secure content delivery network. Files live in S3 with public access blocked, served worldwide through CloudFront using Origin Access Control. S3 Versioning protects the files, and AWS Budgets keeps monthly spending under one cent. Object storage plus edge delivery plus cost alarms is a pattern every cloud provider shares.</p>
     </article>
   </section>
 
   <!-- ===== WHY HIRE ME ===== -->
-  <section class="wrap" aria-label="Why hire me">
+  <section id="why" class="wrap" aria-label="Why hire me">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
       <h2>Why hire me</h2>
     </div>
-    <p class="lead reveal">Proof beats promises. Here is what already runs.</p>
+    <p class="lead reveal">Proof beats promises. Here is what already runs, and why it will keep running on whatever platform your team uses.</p>
     <div class="proof">
       <article class="proof-card reveal">
         <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6Z"/></svg></span>
@@ -504,9 +537,19 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
         <p>Public access blocked on every bucket, Origin Access Control in front, versioning behind. Safe before fast.</p>
       </article>
       <article class="proof-card reveal">
+        <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span>
+        <h3>Principles over providers</h3>
+        <p>Event rules, edge caching, identity controls and budget alarms exist on every major cloud. I built on AWS first, so I will not be lost on the second.</p>
+      </article>
+      <article class="proof-card reveal">
         <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16M6 17V9l4 3 4-6 4 5v6"/></svg></span>
         <h3>Built in production, not theory</h3>
-        <p>Everything on this page runs in a live AWS account, with AWS Cloud Practitioner in progress alongside it.</p>
+        <p>Everything on this page runs in a live cloud account, with AWS Cloud Practitioner in progress alongside it.</p>
+      </article>
+      <article class="proof-card reveal">
+        <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13 5-2 14"/></svg></span>
+        <h3>Ships complete, polished work</h3>
+        <p>This site is a project too: hand built, accessible, fast on any device, and measured with live visitor analytics you can see in the footer.</p>
       </article>
     </div>
   </section>
@@ -523,10 +566,15 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
         <div class="chips"><span class="chip">Cloud Security</span><span class="chip">Serverless Architecture</span><span class="chip">FinOps</span><span class="chip">Cloud Operations</span><span class="chip">IT Support</span></div>
       </div>
       <div class="skill-group">
-        <span class="label">What I build with</span>
+        <span class="label">What I build with today</span>
         <div class="chips"><span class="chip">AWS</span><span class="chip">CloudTrail</span><span class="chip">EventBridge</span><span class="chip">SNS</span><span class="chip">S3</span><span class="chip">CloudFront</span><span class="chip">S3 Versioning</span><span class="chip">AWS Budgets</span></div>
       </div>
+      <div class="skill-group">
+        <span class="label">Concepts that travel to any cloud</span>
+        <div class="chips"><span class="chip chip-travel">IAM &amp; Least Privilege</span><span class="chip chip-travel">Event Driven Automation</span><span class="chip chip-travel">Edge Delivery / CDN</span><span class="chip chip-travel">Object Storage &amp; Versioning</span><span class="chip chip-travel">Cost Governance</span><span class="chip chip-travel">Monitoring &amp; Alerting</span></div>
+      </div>
     </div>
+    <p class="skill-note reveal"><strong>Platform flexible by design.</strong> Every pattern above has a direct twin on Microsoft Azure and Google Cloud. I learned the principles, not just one console, so switching providers means learning new names, not new ideas.</p>
     <div class="row reveal">
       <strong>AWS Cloud Practitioner</strong>
       <span class="pill">In progress</span>
@@ -567,7 +615,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   <!-- ===== GET IN TOUCH  EDIT-LINKS ===== -->
   <section id="contact" class="closing wrap reveal" aria-label="Get in touch">
     <h2>Let's talk cloud.</h2>
-    <p>If you are hiring for cloud support, operations or a junior engineering seat, I would love to talk. I reply fast.</p>
+    <p>If you are hiring for cloud support, operations or a junior engineering seat, on AWS or any platform, I would love to talk. I reply fast.</p>
     <div class="hero-actions">
       <a class="btn magnetic" href="https://linkedin.com/in/mhkb2216" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span class="arr">&#8594;</span></a>
       <a class="btn btn-hello magnetic" href="mailto:mhkb2216@gmail.com">Say hello</a>
@@ -580,9 +628,28 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 <footer>
   <div class="wrap">
     <div class="foot-main">
-      <div>
-        <span class="wordmark">Humayun Khan</span>
-        <p class="foot-tag">Cloud engineer in the making. I build, secure and ship.</p>
+      <!--
+        EDIT-VISITS: live visitor counter (real data only, never faked)
+        All numbers come from GoatCounter. Setup: set GC_CODE below in
+        the script (EDIT-ANALYTICS), then in the GoatCounter dashboard
+        open Settings and tick "Allow adding a visitor counter on your
+        website". Total visits always loads first; the "past 7 days"
+        and "today" numbers appear automatically when GoatCounter
+        returns them. Until real data loads, the panel shows an honest
+        placeholder instead of a fake number.
+      -->
+      <div class="visitor-panel reveal" id="visitorPanel">
+        <div class="vp-head">
+          <span class="vp-dot" aria-hidden="true"></span>
+          <span class="label">Portfolio traffic &#183; live</span>
+        </div>
+        <p class="vp-count"><b id="visitNum" aria-live="polite">&#183;&#183;&#183;</b><span class="vp-unit">total visits</span></p>
+        <div class="vp-sub" id="vpSub" hidden>
+          <div class="vp-mini" id="vpWeek" hidden><b id="visitWeek">0</b><span>past 7 days</span></div>
+          <div class="vp-mini" id="vpToday" hidden><b id="visitToday">0</b><span>today</span></div>
+          <div class="vp-mini"><b>+1</b><span>you, right now</span></div>
+        </div>
+        <small class="vp-note" id="vpNote">Counted in real time by <span class="hl">GoatCounter</span>, privacy friendly analytics. Real numbers only, never inflated.</small>
       </div>
       <nav class="foot-links" aria-label="Footer">
         <a href="#projects">Projects</a>
@@ -608,7 +675,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Typing loop */
-  var phrases = ['cloud security','content delivery','cost control','serverless systems','cloud operations','IT support','real projects'];
+  var phrases = ['cloud security','content delivery','cost control','serverless systems','cloud operations','multi cloud thinking','IT support','real projects'];
   var typed = document.getElementById('typed');
   if (typed && !reduced) {
     var pi = 0, ci = phrases[0].length, deleting = true;
@@ -655,7 +722,40 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     revealEls.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* Count up stats */
+  /* Live status terminal: type the command, then bring each system
+     online one by one. Scroll-triggered, so it plays identically on
+     phones, tablets and desktops. */
+  var termPanel = document.getElementById('termPanel');
+  if (termPanel && !reduced && 'IntersectionObserver' in window) {
+    termPanel.classList.add('animating');
+    var tio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        tio.unobserve(e.target);
+        var lines = termPanel.querySelectorAll('.tline');
+        var cmdText = document.getElementById('tcmdText');
+        var full = cmdText ? cmdText.textContent : '';
+        if (cmdText) cmdText.textContent = '';
+        var i = 0;
+        (function typeCmd(){
+          if (cmdText && i <= full.length) {
+            cmdText.textContent = full.slice(0, i);
+            i++;
+            setTimeout(typeCmd, 42);
+          } else {
+            for (var j = 1; j < lines.length; j++) {
+              (function(j){
+                setTimeout(function(){ lines[j].classList.add('on'); }, 230 * j);
+              })(j);
+            }
+          }
+        })();
+      });
+    }, { threshold: 0.35 });
+    tio.observe(termPanel);
+  }
+
+  /* Count up numbers */
   function runCount(el){
     var to = parseInt(el.getAttribute('data-to'), 10), start = null;
     function step(t){
@@ -678,7 +778,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     counts.forEach(function(el){ el.textContent = el.getAttribute('data-to'); });
   }
 
-  /* Magnetic buttons */
+  /* Magnetic buttons (fine pointers only; touch devices skip this) */
   if (matchMedia('(pointer:fine)').matches && !reduced) {
     document.querySelectorAll('.magnetic').forEach(function(btn){
       btn.addEventListener('mousemove', function(e){
@@ -691,7 +791,8 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     });
   }
 
-  /* 3D tilt + cursor spotlight on proof cards */
+  /* 3D tilt + cursor spotlight on proof cards (fine pointers only;
+     on touch, the cards animate on scroll via CSS instead) */
   if (matchMedia('(pointer:fine)').matches && !reduced) {
     document.querySelectorAll('.proof-card').forEach(function(card){
       card.addEventListener('mousemove', function(e){
@@ -706,9 +807,10 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     });
   }
 
-  /* Hero pointer glow */
+  /* Hero pointer glow (desktop); on touch the glow drifts on its own */
   var hero = document.querySelector('.hero'), glow = document.getElementById('glow');
   if (hero && glow && !reduced && matchMedia('(pointer:fine)').matches) {
+    glow.style.animation = 'none';
     hero.addEventListener('mousemove', function(e){
       var r = hero.getBoundingClientRect();
       glow.style.left = (e.clientX - r.left) + 'px';
@@ -716,31 +818,63 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     });
   }
 
-  /* Real visitor count from GoatCounter. Tries the site-wide total
-     first, then the homepage path. Stays hidden unless real data
-     loads. Never fakes a number. */
+  /* EDIT-ANALYTICS
+     Real visitor numbers from GoatCounter, shown in the footer panel:
+     total visits, past 7 days, and today. Tries the site-wide total
+     first, then the homepage path. Counts up when it scrolls into
+     view. Never fakes a number: if no real data loads yet, it shows
+     an honest placeholder instead. */
   (function(){
-    var stat = document.getElementById('visitStat'), num = document.getElementById('visitNum');
-    if (!stat || !num || !window.fetch) return;
+    var GC_CODE = 'humayun';
+    var base = 'https://' + GC_CODE + '.goatcounter.com/counter/TOTAL.json';
+    var num = document.getElementById('visitNum');
+    var note = document.getElementById('vpNote');
+    var sub = document.getElementById('vpSub');
+    var weekWrap = document.getElementById('vpWeek'), weekNum = document.getElementById('visitWeek');
+    var dayWrap = document.getElementById('vpToday'), dayNum = document.getElementById('visitToday');
+    if (!num || !window.fetch) return;
     function grab(url){
       return fetch(url).then(function(r){
         if (!r.ok) throw 0;
         return r.json();
       }).then(function(d){
         var n = parseInt(String(d.count).replace(/[^0-9]/g, ''), 10);
-        if (isNaN(n) || n < 1) throw 0;
+        if (isNaN(n) || n < 0) throw 0;
         return n;
       });
     }
-    grab('https://humayun.goatcounter.com/counter/TOTAL.json')
-      .catch(function(){ return grab('https://humayun.goatcounter.com/counter//.json'); })
+    function iso(d){
+      function p(n){ return (n < 10 ? '0' : '') + n; }
+      return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+    }
+    grab(base)
+      .catch(function(){ return grab('https://' + GC_CODE + '.goatcounter.com/counter//.json'); })
       .then(function(n){
-        stat.hidden = false;
-        if (reduced) { num.textContent = n.toLocaleString('en-US'); return; }
-        num.setAttribute('data-to', String(n));
-        runCount(num);
+        if (n < 1) throw 0;
+        if (sub) sub.hidden = false;
+        if (reduced || !('IntersectionObserver' in window)) {
+          num.textContent = n.toLocaleString('en-US');
+        } else {
+          num.setAttribute('data-to', String(n));
+          var vio = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+              if (e.isIntersecting) { runCount(num); vio.unobserve(num); }
+            });
+          }, { threshold: 0.4 });
+          vio.observe(num);
+        }
+        var now = new Date();
+        grab(base + '?start=' + iso(new Date(now.getTime() - 6 * 864e5))).then(function(w){
+          if (weekNum && weekWrap) { weekNum.textContent = w.toLocaleString('en-US'); weekWrap.hidden = false; }
+        }).catch(function(){});
+        grab(base + '?start=' + iso(now)).then(function(t){
+          if (dayNum && dayWrap) { dayNum.textContent = t.toLocaleString('en-US'); dayWrap.hidden = false; }
+        }).catch(function(){});
       })
-      .catch(function(){ /* no account or no data yet: show nothing, never fake */ });
+      .catch(function(){
+        num.textContent = '\u00B7\u00B7\u00B7';
+        if (note) note.textContent = 'Live counter connects once the site is deployed. Real numbers only, never inflated.';
+      });
   })();
 
   /* Scroll progress bar, header shadow, back-to-top */
@@ -804,6 +938,8 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 })();
 </script>
 
+<!-- EDIT-ANALYTICS: GoatCounter tracking tag. If you change GC_CODE
+     in the script above, change "humayun" here too. -->
 <script data-goatcounter="https://humayun.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
