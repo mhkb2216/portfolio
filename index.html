@@ -5,7 +5,6 @@
   ============================================================
   HOW TO EDIT THIS FILE (for Humayun)
   Everything is in this one file. Search for these markers:
-    EDIT-QUOTES   the 10 rotating quotes
     EDIT-STATS    the four numbers in the stat strip
     EDIT-PROJECTS the project cards
     EDIT-CHIPS    the skill chips
@@ -19,18 +18,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B121C">
 <title>Humayun Khan | Portfolio</title>
-<!-- Real visitor analytics via GoatCounter. Records nothing until the account exists. -->
 <meta name="description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control. AWS Cloud Practitioner in progress.">
 <link rel="canonical" href="https://humayun-khan.com/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://mhkb2216.github.io/">
+<meta property="og:url" content="https://humayun-khan.com/">
 <meta property="og:title" content="Humayun Khan | Portfolio">
 <meta property="og:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control. AWS Cloud Practitioner in progress.">
-<meta property="og:image" content="https://mhkb2216.github.io/og-image.png">
+<meta property="og:image" content="https://humayun-khan.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Humayun Khan | Portfolio">
 <meta name="twitter:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control. AWS Cloud Practitioner in progress.">
-<meta name="twitter:image" content="https://mhkb2216.github.io/og-image.png">
+<meta name="twitter:image" content="https://humayun-khan.com/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B121C'/%3E%3Cpath d='M9 23V9h3.4v5.4h7.2V9H23v14h-3.4v-5.6h-7.2V23Z' fill='%23FF9900'/%3E%3C/svg%3E">
 <link rel="preload" as="image" href="photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +48,6 @@
   --font-display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:64px;--s7:96px;
-  /* Design system tokens */
   --r-sm:10px;--r-md:12px;--r-lg:16px;--r-pill:999px;
   --shadow-card:0 14px 40px rgba(0,0,0,.35);
   --shadow-glow:0 6px 24px rgba(255,153,0,.28);
@@ -103,11 +100,15 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 8
   .nav ul li:first-child{border-top:none}
   .menu-btn{display:inline-flex}
 }
-@media(max-width:640px){.nav .btn-ghost{display:none}}
-@media(max-width:460px){.nav .btn-hello{display:none}}
+@media(max-width:640px){.nav .btn{display:none}.menu-btn{margin-left:auto}}
 
-/* Hero: compact so content shows without scrolling */
-.hero{position:relative;overflow:hidden;padding:var(--s3) var(--s3) var(--s5)}
+/* Availability status pill */
+.status{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.04em;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:7px 15px;margin-bottom:var(--s3)}
+.status-dot{width:9px;height:9px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.55);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:var(--s4) var(--s3) var(--s5)}
 .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(233,238,245,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
 .glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.14),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);left:70%;top:30%;will-change:left,top}
 .hero>*{position:relative;z-index:1}
@@ -123,7 +124,6 @@ h1{font-size:clamp(2.4rem,6.4vw,4.2rem);font-weight:900;letter-spacing:-.03em;li
 .hero p{max-width:58ch;color:var(--muted);font-size:1.08rem}
 .hero-actions{display:flex;gap:var(--s2);margin-top:var(--s4);flex-wrap:wrap}
 
-/* Hero two column with portrait */
 .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--s5)}
 .hero-text{flex:1;min-width:0}
 .portrait{flex:none;position:relative;width:min(280px,30vw)}
@@ -133,11 +133,12 @@ h1{font-size:clamp(2.4rem,6.4vw,4.2rem);font-weight:900;letter-spacing:-.03em;li
 @keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:820px){
   .hero-inner{flex-direction:column-reverse;align-items:center;gap:var(--s3);text-align:center}
-  .hero{padding:var(--s2) var(--s3) var(--s4)}
-  .portrait{width:130px;align-self:center}
+  .hero{padding:var(--s3) var(--s3) var(--s4)}
+  .portrait{width:140px;align-self:center}
   .portrait::after{inset:-10px}
   .hero-actions{justify-content:center}
   h1{margin:var(--s2) 0}
+  .hero p{margin-left:auto;margin-right:auto}
 }
 
 /* Stats  EDIT-STATS in the HTML below */
@@ -177,7 +178,7 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .project:hover .step:nth-child(7){transition-delay:.54s}
 .project p{max-width:60ch;color:var(--muted)}
 
-/* Why hire me proof grid  EDIT-QUOTES */
+/* Why hire me proof grid */
 .lead{color:var(--muted);font-size:1.08rem;margin:-24px 0 var(--s5);max-width:50ch}
 .proof{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3)}
 .proof-card{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s4);position:relative;overflow:hidden;transition:transform var(--dur-med) var(--ease),border-color var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease)}
@@ -232,6 +233,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   .ribbon span{animation:none;padding-left:0}
   .chip:hover{transform:none}
   .cursor{animation:none}
+  .status-dot{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
   .flow .step{transition:none}
   .glow,.hero::after{display:none}
@@ -246,8 +248,8 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Humayun Khan",
-  "url": "https://mhkb2216.github.io/",
-  "image": "https://mhkb2216.github.io/photo.jpg",
+  "url": "https://humayun-khan.com/",
+  "image": "https://humayun-khan.com/photo.jpg",
   "email": "mailto:mhkb2216@gmail.com",
   "sameAs": ["https://linkedin.com/in/mhkb2216", "https://github.com/mhkb2216"],
   "jobTitle": "Computer Science Student",
@@ -255,12 +257,6 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   "alumniOf": {"@type": "CollegeOrUniversity", "name": "SZABIST University Karachi"}
 }
 </script>
-    <link rel="canonical" href="https://humayun-khan.com/">
-    <meta property="og:title" content="Humayun Khan · Cloud & DevOps Engineer">
-    <meta property="og:description" content="AWS focused cloud engineer. Projects in cloud security, static hosting and cost optimisation.">
-    <meta property="og:image" content="https://humayun-khan.com/photo.jpg">
-    <meta property="og:url" content="https://humayun-khan.com/">
-    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <a class="skip" href="#projects">Skip to content</a>
@@ -273,17 +269,15 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-   <ul id="navList">
+    <ul id="navList">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="resume.pdf" download>Download my resume</a></li>
     </ul>
     <div class="nav-actions">
       <!-- EDIT-LINKS -->
-      <a class="btn btn-ghost" href="resume.pdf" download>Download my resume</a>
       <a class="btn" href="https://linkedin.com/in/mhkb2216">Connect on LinkedIn</a>
       <a class="btn btn-hello" href="mailto:mhkb2216@gmail.com">Say hello</a>
     </div>
@@ -297,12 +291,13 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     <div class="glow" id="glow"></div>
     <div class="hero-inner">
       <div class="hero-text">
+        <span class="status"><span class="status-dot"></span>Available for entry-level cloud roles</span>
         <p class="term" aria-label="Humayun Khan builds cloud security, content delivery, cost control and serverless systems"><span class="prompt">humayun@cloud:~$</span> <span class="typed" id="typed">cloud security</span><span class="cursor">&#9615;</span></p>
         <h1>I build real things in the cloud.</h1>
         <p>I am Humayun Khan, a computer science student who builds secure, cost efficient systems in the cloud. Everything below runs in a live AWS account, and the thinking behind it carries to any platform.</p>
         <div class="hero-actions">
           <a class="btn magnetic" href="#projects">Explore my work <span class="arr">&#8594;</span></a>
-          <a class="btn btn-ghost magnetic" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost magnetic" href="resume.pdf" download>Download resume</a>
         </div>
       </div>
       <div class="portrait" aria-hidden="false">
@@ -344,7 +339,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     </article>
   </section>
 
-  <!-- ===== WHY HIRE ME  EDIT-QUOTES ===== -->
+  <!-- ===== WHY HIRE ME ===== -->
   <section class="wrap" aria-label="Why hire me">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -353,252 +348,4 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     <p class="lead reveal">Proof beats promises. Here is what already runs.</p>
     <div class="proof">
       <article class="proof-card reveal">
-        <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6Z"/></svg></span>
-        <h3>Security that reacts in seconds</h3>
-        <p>Root login alerts flow from CloudTrail through EventBridge straight to my inbox. Zero manual checks.</p>
-      </article>
-      <article class="proof-card reveal">
-        <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span>
-        <h3>Global delivery under one cent</h3>
-        <p>CloudFront serves my documents worldwide while AWS Budgets holds the monthly bill below $0.01.</p>
-      </article>
-      <article class="proof-card reveal">
-        <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
-        <h3>Locked down by default</h3>
-        <p>Public access blocked on every bucket, Origin Access Control in front, versioning behind. Safe before fast.</p>
-      </article>
-      <article class="proof-card reveal">
-        <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16M6 17V9l4 3 4-6 4 5v6"/></svg></span>
-        <h3>Built in production, not theory</h3>
-        <p>Everything on this page runs in a live AWS account, with AWS Cloud Practitioner in progress alongside it.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS  EDIT-CHIPS ===== -->
-  <section id="skills" class="wrap">
-    <div class="section-head reveal">
-      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14 -1.5 7 5-3 5 3-1.5-7"/></svg></span>
-      <h2>Skills and certifications</h2>
-    </div>
-    <div class="skill-groups reveal">
-      <div class="skill-group">
-        <span class="label">What I practice</span>
-        <div class="chips"><span class="chip">Cloud Security</span><span class="chip">Serverless Architecture</span><span class="chip">FinOps</span><span class="chip">Cloud Operations</span><span class="chip">IT Support</span></div>
-      </div>
-      <div class="skill-group">
-        <span class="label">What I build with</span>
-        <div class="chips"><span class="chip">AWS</span><span class="chip">CloudTrail</span><span class="chip">EventBridge</span><span class="chip">SNS</span><span class="chip">S3</span><span class="chip">CloudFront</span><span class="chip">S3 Versioning</span><span class="chip">AWS Budgets</span></div>
-      </div>
-    </div>
-    <div class="row reveal">
-      <strong>AWS Cloud Practitioner</strong>
-      <span class="pill">In progress</span>
-    </div>
-  </section>
-
-  <!-- ===== EXPERIENCE ===== -->
-  <section id="experience" class="wrap">
-    <div class="section-head reveal">
-      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
-      <h2>Experience</h2>
-    </div>
-    <div class="xp reveal">
-      <div class="xp-head">
-        <strong>Software Development Intern · CodersCave</strong>
-        <span class="label">Remote · Sep 2023 to Oct 2023</span>
-      </div>
-      <ul>
-        <li>Helped build and fix software applications to meet project goals and user needs</li>
-        <li>Worked closely with a remote team to add new features and make the software easier to use</li>
-        <li>Kept every daily task on schedule in a fast paced virtual environment</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== EDUCATION ===== -->
-  <section id="education" class="wrap">
-    <div class="section-head reveal">
-      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 10 5-10 5L2 9Z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg></span>
-      <h2>Education</h2>
-    </div>
-    <div class="row reveal">
-      <div><strong>BS Computer Science</strong><span class="label">SZABIST University Karachi</span></div>
-      <span class="pill">Class of 2027</span>
-    </div>
-  </section>
-
-  <!-- ===== GET IN TOUCH  EDIT-LINKS ===== -->
-  <section id="contact" class="closing wrap reveal" aria-label="Get in touch">
-    <h2>Let's talk cloud.</h2>
-    <p>If you are hiring for cloud support, operations or a junior engineering seat, I would love to talk. I reply fast.</p>
-    <div class="hero-actions">
-      <a class="btn magnetic" href="https://linkedin.com/in/mhkb2216">Connect on LinkedIn <span class="arr">&#8594;</span></a>
-      <a class="btn btn-hello magnetic" href="mailto:mhkb2216@gmail.com">Say hello</a>
-      <a class="btn btn-ghost magnetic" href="https://github.com/mhkb2216">See my GitHub</a>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-main">
-      <div>
-        <span class="wordmark">Humayun Khan</span>
-        <p class="foot-tag">Cloud engineer in the making. I build, secure and ship.</p>
-      </div>
-      <nav class="foot-links" aria-label="Footer">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="mailto:mhkb2216@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/mhkb2216">LinkedIn</a>
-        <a href="https://github.com/mhkb2216">GitHub</a>
-      </nav>
-    </div>
-    <div class="foot-line"></div>
-    <small class="foot-note">&#169; 2026 Humayun Khan &#183; Designed and built by me, one commit at a time.</small>
-  </div>
-</footer>
-
-<script>
-(function(){
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Typing loop */
-  var phrases = ['cloud security','content delivery','cost control','serverless systems','cloud operations','IT support','real projects'];
-  var typed = document.getElementById('typed');
-  if (typed && !reduced) {
-    var pi = 0, ci = phrases[0].length, deleting = true;
-    setTimeout(function tick(){
-      var word = phrases[pi];
-      if (deleting) {
-        ci--;
-        typed.textContent = word.slice(0, ci);
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-        setTimeout(tick, 40);
-      } else {
-        word = phrases[pi];
-        ci++;
-        typed.textContent = word.slice(0, ci);
-        if (ci === word.length) { deleting = true; setTimeout(tick, 2100); return; }
-        setTimeout(tick, 75);
-      }
-    }, 2100);
-  }
-
-  /* Scroll reveal */
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && !reduced) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('in'); });
-  }
-
-  /* Count up stats */
-  var counts = document.querySelectorAll('.count');
-  function runCount(el){
-    var to = parseInt(el.getAttribute('data-to'), 10), start = null;
-    function step(t){
-      if (!start) start = t;
-      var p = Math.min((t - start) / 900, 1);
-      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if ('IntersectionObserver' in window && !reduced) {
-    var cio = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); }
-      });
-    }, { threshold: 0.5 });
-    counts.forEach(function(el){ cio.observe(el); });
-  } else {
-    counts.forEach(function(el){ el.textContent = el.getAttribute('data-to'); });
-  }
-
-  /* Magnetic buttons */
-  if (matchMedia('(pointer:fine)').matches && !reduced) {
-    document.querySelectorAll('.magnetic').forEach(function(btn){
-      btn.addEventListener('mousemove', function(e){
-        var r = btn.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width / 2) / r.width;
-        var y = (e.clientY - r.top - r.height / 2) / r.height;
-        btn.style.transform = 'translate(' + (x * 6) + 'px,' + (y * 6) + 'px)';
-      });
-      btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
-    });
-  }
-
-  /* Hero pointer glow */
-  var hero = document.querySelector('.hero'), glow = document.getElementById('glow');
-  if (hero && glow && !reduced && matchMedia('(pointer:fine)').matches) {
-    hero.addEventListener('mousemove', function(e){
-      var r = hero.getBoundingClientRect();
-      glow.style.left = (e.clientX - r.left) + 'px';
-      glow.style.top = (e.clientY - r.top) + 'px';
-    });
-  }
-
-  /* Real visitor count from GoatCounter public counter. Stays hidden unless real data loads. */
-  fetch('https://humayun.goatcounter.com/counter//.json')
-    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
-    .then(function(d){
-      var n = parseInt(String(d.count).replace(/\D/g,''), 10);
-      if (!isNaN(n) && n > 0) {
-        document.getElementById('visitNum').textContent = d.count.trim();
-        document.getElementById('visitStat').hidden = false;
-      }
-    })
-    .catch(function(){ /* no account or no data yet: show nothing, never fake */ });
-
-  /* Scroll progress bar */
-  var bar = document.getElementById('progress');
-  function onScroll(){
-    var h = document.documentElement;
-    var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
-    bar.style.width = (p * 100) + '%';
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  /* Mobile menu */
-  var menuBtn = document.getElementById('menuBtn');
-  var navList = document.getElementById('navList');
-  if (menuBtn && navList) {
-    menuBtn.addEventListener('click', function(){
-      var open = navList.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    navList.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ navList.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); });
-    });
-  }
-
-  /* Active nav highlight */
-  var links = document.querySelectorAll('.nav ul a');
-  var sections = ['projects','skills','experience','education','contact'].map(function(id){ return document.getElementById(id); });
-  if ('IntersectionObserver' in window) {
-    var nio = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) {
-          links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    sections.forEach(function(s){ if (s) nio.observe(s); });
-  }
-})();
-</script>
-
-<script data-goatcounter="https://humayun.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-</body>
-</html>
+        <span class="proof-ic" aria-hidden="true"><svg viewB
