@@ -6,10 +6,11 @@
   HOW TO EDIT THIS FILE (for Humayun)
   Everything is in this one file. Search for these markers:
     EDIT-STATS      the numbers in the stat strip
-    EDIT-PROJECTS   the project cards
+    EDIT-PROJECTS   the project entries
     EDIT-CHIPS      the skill chips
+    EDIT-CERTS      the certification rows
     EDIT-LINKS      your email, LinkedIn, GitHub
-    EDIT-RESUME     the single Download resume button (hero)
+    EDIT-RESUME     the resume buttons (nav + hero)
     EDIT-COLORS     the whole color scheme (top of the styles)
     EDIT-VISITS     the live visitor counter in the footer
     EDIT-ANALYTICS  GC_CODE in the script + the GoatCounter
@@ -19,40 +20,46 @@
   ============================================================
 -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0B121C">
 <meta name="color-scheme" content="dark">
-<title>Humayun Khan · Cloud Engineer Portfolio</title>
-<meta name="description" content="Computer science student at SZABIST Karachi building secure, cost efficient cloud systems. Live projects in cloud security, global content delivery and cost control, built on AWS today with principles that transfer to any cloud platform.">
+<title>Humayun Khan · Cloud, Infrastructure &amp; IT Portfolio</title>
+<meta name="description" content="Humayun Khan builds secure, cost efficient systems in the cloud. Live projects in security, global content delivery and cost control, with growing skills in networking and IT infrastructure.">
 <meta name="author" content="Humayun Khan">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://humayun-khan.com/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Humayun Khan">
 <meta property="og:url" content="https://humayun-khan.com/">
-<meta property="og:title" content="Humayun Khan · Cloud Engineer Portfolio">
-<meta property="og:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control, on AWS today and transferable to any platform.">
+<meta property="og:title" content="Humayun Khan · Cloud, Infrastructure &amp; IT Portfolio">
+<meta property="og:description" content="Secure, cost efficient systems built in the cloud. Real projects in security, delivery and cost control, transferable to any platform.">
 <meta property="og:image" content="https://humayun-khan.com/og-image.png">
+<meta property="og:image:alt" content="Humayun Khan portfolio preview">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Humayun Khan · Cloud Engineer Portfolio">
-<meta name="twitter:description" content="Computer science student building in the cloud. Real projects in security, delivery and cost control, on AWS today and transferable to any platform.">
+<meta name="twitter:url" content="https://humayun-khan.com/">
+<meta name="twitter:title" content="Humayun Khan · Cloud, Infrastructure &amp; IT Portfolio">
+<meta name="twitter:description" content="Secure, cost efficient systems built in the cloud. Real projects in security, delivery and cost control, transferable to any platform.">
 <meta name="twitter:image" content="https://humayun-khan.com/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B121C'/%3E%3Cpath d='M9 23V9h3.4v5.4h7.2V9H23v14h-3.4v-5.6h-7.2V23Z' fill='%23FF9900'/%3E%3C/svg%3E">
-<link rel="preload" as="image" href="photo.jpg">
+<link rel="preload" as="image" href="photo.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* EDIT-COLORS: change the whole site look here */
 :root{
   --bg:#0B121C;
   --surface:#111B29;
+  --surface-2:#162132;
   --text:#E9EEF5;
-  --muted:#8B98AA;
+  --muted:#8FA0B4;
   --accent:#FF9900;
   --cta:#FF9900;
   --cta-text:#1A1005;
   --ok:#4ADE80;
   --border:rgba(233,238,245,.10);
+  --border-strong:rgba(255,153,0,.45);
   --font-display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:64px;--s7:96px;
@@ -62,22 +69,34 @@
   --dur-fast:.18s;--dur-med:.3s;--dur-slow:.6s;
   --ease:cubic-bezier(.4,0,.2,1);
 }
+@media(prefers-contrast:more){
+  :root{--muted:#AFBCCC;--border:rgba(233,238,245,.24)}
+}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;color-scheme:dark}
-body{background:var(--bg);color:var(--text);font-family:var(--font-display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;animation:pagein .5s var(--ease)}
+html{scroll-behavior:smooth;color-scheme:dark;scrollbar-color:#22304A var(--bg)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#22304A;border:3px solid var(--bg);border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:#2E4160}
+body{background:radial-gradient(1100px 520px at 78% -8%,rgba(255,153,0,.055),transparent 60%),var(--bg);color:var(--text);font-family:var(--font-display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;animation:pagein .5s var(--ease)}
 @keyframes pagein{from{opacity:0}to{opacity:1}}
 a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
 ::selection{background:var(--accent);color:var(--cta-text)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 #top:focus{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--cta-text);padding:10px 18px;border-radius:0 0 10px 0;z-index:30;font-weight:600}
 .skip:focus{left:0}
 .wrap{max-width:1060px;margin:0 auto;padding:0 var(--s3)}
 @media(min-width:1700px){.wrap,.wrap-hero,.nav{max-width:1180px}}
 .wrap-hero{max-width:1060px;margin:0 auto;width:100%}
 .label{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-section[id]{scroll-margin-top:84px}
+.arr{display:inline-block;transition:transform .2s ease}
+section[id]{scroll-margin-top:90px}
+.cv{content-visibility:auto;contain-intrinsic-size:auto 900px}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
 
 .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -85,10 +104,11 @@ section[id]{scroll-margin-top:84px}
 #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:20}
 
 /* Nav */
-header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .35s var(--ease)}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .35s var(--ease)}
 header.scrolled{box-shadow:0 12px 32px rgba(0,0,0,.35)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding:12px var(--s3);max-width:1060px;margin:0 auto}
 .wordmark{font-weight:900;font-size:1.1rem;letter-spacing:-.01em;white-space:nowrap}
+.wordmark span{color:var(--accent)}
 .nav ul{display:flex;gap:var(--s3);list-style:none}
 .nav ul a{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:3px;background:linear-gradient(var(--accent),var(--accent)) left bottom/0 1px no-repeat;transition:color .2s,background-size .3s var(--ease)}
 .nav ul a:hover{color:var(--text);background-size:100% 1px}
@@ -96,9 +116,9 @@ header.scrolled{box-shadow:0 12px 32px rgba(0,0,0,.35)}
 .nav-actions{display:flex;gap:10px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:var(--r-pill);padding:13px 26px;font-weight:600;font-size:.92rem;background:var(--cta);color:var(--cta-text);transition:transform var(--dur-fast) var(--ease),filter var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);border:1px solid transparent;cursor:pointer;will-change:transform;position:relative;overflow:hidden;box-shadow:0 0 0 rgba(255,153,0,0)}
 .btn:hover{filter:brightness(1.06);box-shadow:var(--shadow-glow)}
+.btn:active{transform:scale(.975)}
 .btn::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .45s ease}
 .btn:hover::before{left:130%}
-.btn .arr{display:inline-block;transition:transform .2s ease}
 .btn:hover .arr{transform:translateX(4px)}
 .btn svg{flex:none}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);box-shadow:none}
@@ -114,7 +134,8 @@ header.scrolled{box-shadow:0 12px 32px rgba(0,0,0,.35)}
   .nav ul li:first-child{border-top:none}
   .menu-btn{display:inline-flex}
 }
-@media(max-width:520px){.nav .btn-hello{display:none}}
+@media(max-width:760px){.nav .btn-resume{display:none}}
+@media(max-width:520px){.nav .btn-hello{display:none}body{font-size:16px}}
 
 /* Hero: compact by design, no viewport-height sizing anywhere,
    so the layout can never open up a blank gap on any device */
@@ -207,7 +228,7 @@ h1{font-size:clamp(2.3rem,6.4vw,4.2rem);font-weight:900;letter-spacing:-.03em;li
 .stat::after{content:"";position:absolute;top:0;left:22%;right:22%;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transition:transform .3s var(--ease)}
 .stat:hover::after{transform:scaleX(1)}
 .stat + .stat{border-left:1px solid var(--border)}
-.stat b{display:block;font-size:2rem;font-weight:900;letter-spacing:-.02em;color:var(--text);transition:color .25s var(--ease)}
+.stat b{display:block;font-size:2rem;font-weight:900;letter-spacing:-.02em;color:var(--text);font-variant-numeric:tabular-nums;transition:color .25s var(--ease)}
 .stat:hover b{color:var(--accent)}
 .stat .label{font-size:.7rem}
 @media(max-width:860px){
@@ -217,11 +238,12 @@ h1{font-size:clamp(2.3rem,6.4vw,4.2rem);font-weight:900;letter-spacing:-.03em;li
   .stat:nth-child(-n+2){border-top:none}
 }
 
-/* Ribbon */
-.ribbon{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);overflow:hidden;white-space:nowrap;padding:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.ribbon span{display:inline-block;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--accent);animation:slide 44s linear infinite;padding-left:100%}
-.ribbon:hover span{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-100%)}}
+/* Ribbon: a seamless loop built from two identical spans */
+.ribbon{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);overflow:hidden;padding:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.ribbon-track{display:flex;width:max-content;animation:slide 42s linear infinite}
+.ribbon-track span{flex:none;white-space:nowrap;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--accent)}
+.ribbon:hover .ribbon-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
 
 /* Sections */
 section{padding:var(--s6) 0}
@@ -241,12 +263,25 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 #projects{padding-top:calc(var(--s6) + var(--s4))}
 #why{padding-top:calc(var(--s6) + var(--s4))}
 
+/* Shared arrow lists (projects + experience) */
+.arrows{list-style:none;color:var(--muted)}
+.arrows li{padding-left:1.35em;position:relative;margin-top:9px}
+.arrows li::before{content:"\2192";position:absolute;left:0;color:var(--accent);font-family:var(--font-mono);transition:transform .25s var(--ease)}
+.arrows li:hover::before{transform:translateX(4px)}
+
 /* Projects  EDIT-PROJECTS in the HTML below */
+.lead{color:var(--muted);font-size:1.08rem;margin:-24px 0 var(--s5);max-width:52ch}
 .project{position:relative;padding:var(--s5) var(--s2);border-top:1px solid var(--border);border-radius:var(--r-md);transition:background .3s ease}
 .project::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:3px;border-radius:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease)}
 .project:hover{background:linear-gradient(90deg,var(--surface),transparent 70%)}
 .project:hover::before{transform:scaleY(1)}
 .project:last-of-type{border-bottom:1px solid var(--border)}
+.proj-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:var(--s2)}
+.ptag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:4px 9px;transition:color .25s var(--ease),border-color .25s var(--ease)}
+.project:hover .ptag{border-color:rgba(255,153,0,.35);color:var(--text)}
+.plive{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;color:var(--ok)}
+.plive i{position:relative;flex:none;width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.plive i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(74,222,128,.55);animation:pulse 2.2s ease-out infinite}
 .project h3{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:900;letter-spacing:-.025em;line-height:1.1;max-width:18ch;transition:color .25s}
 .project:hover h3{color:var(--accent)}
 .flow{display:block;margin:var(--s3) 0 var(--s2);font-family:var(--font-mono);font-size:.82rem;letter-spacing:.1em}
@@ -258,15 +293,18 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .project:hover .step:nth-child(5){transition-delay:.36s}
 .project:hover .step:nth-child(7){transition-delay:.54s}
 .project p{max-width:60ch;color:var(--muted)}
+.plist{margin-top:var(--s3);max-width:62ch;font-size:.97rem}
+.ask{display:inline-flex;align-items:center;gap:8px;margin-top:var(--s3);font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;color:var(--accent);padding-bottom:3px;background:linear-gradient(var(--accent),var(--accent)) left bottom/0 1px no-repeat;transition:background-size .3s var(--ease)}
+.ask:hover{background-size:100% 1px}
+.ask:hover .arr{transform:translateX(4px)}
 
 /* Why hire me proof grid */
-.lead{color:var(--muted);font-size:1.08rem;margin:-24px 0 var(--s5);max-width:52ch}
 .proof{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3)}
 .proof-card{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s4);position:relative;overflow:hidden;transition:transform var(--dur-med) var(--ease),opacity var(--dur-slow) var(--ease),border-color var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease)}
 .proof-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .25s;z-index:2}
 .proof-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,153,0,.10),transparent 65%);opacity:0;transition:opacity .3s var(--ease);pointer-events:none}
 .proof-card>*{position:relative;z-index:1}
-.proof-card:hover{transform:translateY(-4px);border-color:rgba(255,153,0,.45);box-shadow:var(--shadow-card)}
+.proof-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--shadow-card)}
 .proof-card:hover::before{opacity:1}
 .proof-card:hover::after{opacity:1}
 .proof-ic{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--accent);margin-bottom:var(--s2);transition:border-color .25s var(--ease),box-shadow .25s var(--ease)}
@@ -294,20 +332,16 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
 .skill-group .chips{margin-bottom:0}
 .skill-note{color:var(--muted);font-size:.95rem;max-width:62ch;margin-bottom:var(--s5)}
 .skill-note strong{color:var(--text);font-weight:600}
-/* Rows, experience, education */
+/* Rows, certifications, education */
 .row{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding:var(--s4) 0;border-top:1px solid var(--border);flex-wrap:wrap;transition:background .3s var(--ease)}
 .row:hover{background:linear-gradient(90deg,var(--surface),transparent 75%)}
-.row:last-child{border-bottom:1px solid var(--border)}
+.row:last-of-type{border-bottom:1px solid var(--border)}
 .row strong{font-weight:800;font-size:1.05rem;display:block;margin-bottom:6px}
 .pill{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:var(--r-pill);padding:5px 12px;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease)}
 .row:hover .pill{background:var(--accent);color:var(--cta-text);transform:scale(1.05)}
 .xp{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s4);transition:transform var(--dur-med) var(--ease),border-color var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease)}
 .xp:hover{transform:translateY(-3px);border-color:rgba(255,153,0,.4);box-shadow:var(--shadow-card)}
 .xp-head{display:flex;justify-content:space-between;gap:var(--s2);flex-wrap:wrap;margin-bottom:var(--s2)}
-.xp ul{list-style:none;color:var(--muted)}
-.xp li{padding-left:1.3em;position:relative;margin-top:8px}
-.xp li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--font-mono);transition:transform .25s var(--ease)}
-.xp li:hover::before{transform:translateX(4px)}
 
 /* Touch-device animations: phones and tablets have no hover, so the
    same highlights play automatically as each element scrolls into
@@ -333,6 +367,14 @@ h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
    background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s ease-in-out infinite}
 .closing p{color:var(--muted);max-width:46ch;margin:0 auto var(--s4)}
 .closing .hero-actions{justify-content:center;margin-top:0}
+.email-line{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:calc(var(--s4) + 1.6em);font-family:var(--font-mono)}
+.email-text{font-size:.98rem;color:var(--text);border-bottom:1px dashed var(--border);padding-bottom:2px;transition:color .2s,border-color .2s}
+.email-text:hover{color:var(--accent);border-color:var(--accent)}
+.copy-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.06em;padding:8px 14px;border:1px solid var(--border);border-radius:var(--r-pill);background:var(--surface);color:var(--text);cursor:pointer;transition:border-color .2s,color .2s,transform var(--dur-fast) var(--ease)}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.copy-btn:active{transform:scale(.96)}
+.copy-btn.copied{border-color:var(--ok);color:var(--ok)}
+.copy-btn svg{flex:none}
 
 .to-top{position:fixed;right:22px;bottom:22px;z-index:15;width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--accent);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s,border-color .2s,box-shadow .2s}
 .to-top.show{opacity:1;visibility:visible;transform:none}
@@ -345,7 +387,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 .visitor-panel{flex:1 1 320px;max-width:460px;position:relative;border:1px solid var(--border);border-radius:var(--r-lg);background:linear-gradient(140deg,var(--surface),rgba(255,153,0,.045));padding:var(--s3) var(--s4);overflow:hidden;transition:border-color var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease)}
 .visitor-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55}
 .visitor-panel::after{content:"";position:absolute;width:220px;height:220px;right:-70px;bottom:-110px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.10),transparent 65%);pointer-events:none}
-.visitor-panel:hover{border-color:rgba(255,153,0,.45);box-shadow:var(--shadow-card)}
+.visitor-panel:hover{border-color:var(--border-strong);box-shadow:var(--shadow-card)}
 .visitor-panel>*{position:relative;z-index:1}
 .vp-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .vp-dot{position:relative;flex:none;width:8px;height:8px;border-radius:50%;background:var(--ok)}
@@ -370,7 +412,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .ribbon span{animation:none;padding-left:0}
+  .ribbon-track{animation:none}
   .chip:hover{transform:none}
   .cursor{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
@@ -381,6 +423,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   .portrait::after{animation:none}
   .status .dot::after{animation:none;display:none}
   .vp-dot::after{animation:none;display:none}
+  .plive i::after{animation:none;display:none}
   h1{animation:none;background:none;color:var(--text)}
   .section-head .icon{animation:none;opacity:1}
   .section-head h2::after{transition:none}
@@ -398,21 +441,54 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   .proof-card:hover .proof-ic svg{animation:none}
   .proof-card.in .proof-ic svg{animation:none}
   .stat::after{transition:none}
+  .btn::before{display:none}
+  .btn:active,.copy-btn:active{transform:none}
+  .arr,.arrows li::before{transition:none}
+}
+
+@media(forced-colors:active){
+  .btn,.btn-ghost,.btn-hello,.pill,.chip,.ptag,.copy-btn{border:1px solid ButtonText}
+}
+
+@media print{
+  #progress,.to-top,.ribbon,.glow,.glow2,.menu-btn,.skip,.nav-actions,.hero-actions,.copy-btn{display:none!important}
+  body,header,footer,.stats,.term-panel,.term-bar,.proof-card,.xp,.visitor-panel,.chip,.status,.icon,.proof-ic{background:#fff!important;color:#111!important;box-shadow:none!important;border-color:#ddd!important}
+  body{font-size:12pt}
+  header{position:static}
+  h1,.closing h2{background:none!important;color:#111!important;-webkit-text-fill-color:#111}
+  .hero p,.project p,.proof-card p,.lead,.skill-note,.arrows,.label,.term,.tdim,.foot-note{color:#333!important}
+  .project:hover{background:none}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.75em;color:#555}
+  .reveal{opacity:1!important;transform:none!important}
 }
 </style>
 <noscript><style>.reveal,.section-head .icon,.tline>*{opacity:1!important;transform:none!important;animation:none!important}.section-head h2::after{width:100%}</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Humayun Khan",
-  "url": "https://humayun-khan.com/",
-  "image": "https://humayun-khan.com/photo.jpg",
-  "email": "mailto:mhkb2216@gmail.com",
-  "sameAs": ["https://linkedin.com/in/mhkb2216", "https://github.com/mhkb2216"],
-  "jobTitle": "Computer Science Student",
-  "knowsAbout": ["Cloud Computing", "Cloud Security", "Serverless Architecture", "FinOps", "Cloud Operations", "AWS", "Content Delivery Networks", "Event Driven Architecture", "Cloud Cost Optimization"],
-  "alumniOf": {"@type": "CollegeOrUniversity", "name": "SZABIST University Karachi"}
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://humayun-khan.com/#person",
+      "name": "Humayun Khan",
+      "url": "https://humayun-khan.com/",
+      "image": "https://humayun-khan.com/photo.jpg",
+      "email": "mailto:mhkb2216@gmail.com",
+      "sameAs": ["https://linkedin.com/in/mhkb2216", "https://github.com/mhkb2216"],
+      "description": "Builds secure, cost efficient systems in the cloud and is expanding into networking and IT infrastructure.",
+      "knowsAbout": ["Cloud Computing", "Cloud Security", "Networking", "IT Support", "Infrastructure", "Serverless Architecture", "FinOps", "Cloud Operations", "Content Delivery Networks", "DNS", "Event Driven Architecture", "Cloud Cost Optimization"],
+      "alumniOf": {"@type": "CollegeOrUniversity", "name": "SZABIST University Karachi"},
+      "homeLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK"}}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://humayun-khan.com/#website",
+      "url": "https://humayun-khan.com/",
+      "name": "Humayun Khan · Cloud, Infrastructure & IT Portfolio",
+      "inLanguage": "en",
+      "publisher": {"@id": "https://humayun-khan.com/#person"}
+    }
+  ]
 }
 </script>
 </head>
@@ -423,7 +499,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 <!-- ===== NAV ===== -->
 <header>
   <nav class="nav" aria-label="Main">
-    <a class="wordmark" href="#top">Humayun Khan</a>
+    <a class="wordmark" href="#top">Humayun Khan<span>.</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navList">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -435,9 +511,11 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
+      <!-- EDIT-RESUME (1 of 2): quick resume link in the nav -->
+      <a class="btn btn-ghost btn-resume" href="resume.pdf" download aria-label="Download my resume as a PDF">Resume</a>
       <!-- EDIT-LINKS -->
-      <a class="btn" href="https://linkedin.com/in/mhkb2216" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
       <a class="btn btn-hello" href="mailto:mhkb2216@gmail.com">Say hello</a>
+      <a class="btn" href="https://linkedin.com/in/mhkb2216" target="_blank" rel="me noopener noreferrer">Connect on LinkedIn</a>
     </div>
   </nav>
 </header>
@@ -450,71 +528,90 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     <div class="glow2" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-text">
-        <p class="term" aria-label="Humayun Khan builds cloud security, content delivery, cost control and serverless systems"><span class="prompt">humayun@cloud:~$</span> <span class="typed" id="typed">cloud security</span><span class="cursor">&#9615;</span></p>
+        <p class="term" aria-label="Humayun Khan builds cloud security, networking, content delivery, cost control and IT support systems"><span class="prompt">humayun@cloud:~$</span> <span class="typed" id="typed">cloud security</span><span class="cursor">&#9615;</span></p>
         <h1>I build real things in the cloud.</h1>
-        <p>I am Humayun Khan, a computer science student who builds secure, cost efficient systems in the cloud. Everything below runs live on AWS today, and the ideas behind it, like least privilege, event driven automation, edge delivery and cost guardrails, work on any cloud platform.</p>
-        <p class="status"><span class="dot" aria-hidden="true"></span>Open to entry level cloud roles &#183; Karachi &#183; Remote</p>
-        <!-- EDIT-RESUME: the one and only resume button lives here -->
+        <p>I'm Humayun Khan, and I build secure, cost efficient systems in the cloud. Every project below runs live in production today, built on principles that hold up on any platform: least privilege, event driven automation, edge delivery and cost guardrails. I'm also sharpening my networking and IT infrastructure skills every day, working toward a full picture of how modern systems run.</p>
+        <p class="status"><span class="dot" aria-hidden="true"></span>Open to entry level cloud &amp; IT roles &#183; Karachi &#183; Remote</p>
+        <!-- EDIT-RESUME (2 of 2): the main resume button -->
         <div class="hero-actions">
           <a class="btn magnetic" href="#projects">Explore my work <span class="arr">&#8594;</span></a>
           <a class="btn btn-hello magnetic" href="resume.pdf" download aria-label="Download my resume as a PDF"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>Download resume</a>
         </div>
       </div>
       <div class="portrait">
-        <img src="photo.jpg" alt="Humayun Khan" width="640" height="640" fetchpriority="high" decoding="async">
+        <img src="photo.jpg" alt="Portrait of Humayun Khan" width="640" height="640" fetchpriority="high" decoding="async">
       </div>
     </div>
 
     <!-- Live status terminal: every line below is a real running system.
          When this panel scrolls into view the command types itself out
          and the systems report in one by one, on every device -->
-    <div class="term-panel reveal" id="termPanel" role="img" aria-label="Status of my live cloud systems: root login alerts armed, docs delivery cdn live, budget guard under one cent per month, this portfolio site live, AWS Cloud Practitioner in progress">
+    <div class="term-panel reveal" id="termPanel" role="img" aria-label="Live status of my systems: root login alerts armed, docs delivery cdn live, budget guard under one cent per month, security headers enforced with a strict CSP, portfolio site live on Cloudflare Pages, AWS Cloud Practitioner certification in progress">
       <div class="term-bar" aria-hidden="true"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span><span class="term-title">humayun@cloud: ~/status</span></div>
       <div class="term-body" aria-hidden="true">
         <p class="tline tcmd on"><span class="prompt">humayun@cloud:~$</span><span class="tcmd-text" id="tcmdText">check all systems</span><span class="cursor">&#9615;</span></p>
         <p class="tline"><span class="tok">OK</span><span class="tname">root login alerts</span><span class="tdim">CloudTrail &#8594; EventBridge &#8594; SNS</span><span class="tstate">ARMED</span></p>
         <p class="tline"><span class="tok">OK</span><span class="tname">docs delivery cdn</span><span class="tdim">S3 &#8594; CloudFront (OAC)</span><span class="tstate">LIVE</span></p>
         <p class="tline"><span class="tok">OK</span><span class="tname">budget guard</span><span class="tdim">AWS Budgets</span><span class="tstate">&lt;$0.01/MO</span></p>
-        <p class="tline"><span class="tok">OK</span><span class="tname">portfolio site</span><span class="tdim">GitHub Pages &#183; live analytics</span><span class="tstate">LIVE</span></p>
+        <p class="tline"><span class="tok">OK</span><span class="tname">security headers</span><span class="tdim">strict CSP</span><span class="tstate">ENFORCED</span></p>
+        <p class="tline"><span class="tok">OK</span><span class="tname">portfolio site</span><span class="tdim">Cloudflare Pages &#183; live analytics</span><span class="tstate">LIVE</span></p>
         <p class="tline"><span class="tok">&#8635;</span><span class="tname">cloud practitioner</span><span class="tdim">AWS certification</span><span class="tstate">IN PROGRESS</span></p>
       </div>
     </div>
 
     <!-- EDIT-STATS -->
     <div class="stats" aria-label="Quick facts">
-      <div class="stat reveal in"><b><span class="count" data-to="2">0</span></b><span class="label">Cloud projects shipped</span></div>
-      <div class="stat reveal in"><b><span class="count" data-to="9">0</span>+</b><span class="label">Cloud services used</span></div>
-      <div class="stat reveal in"><b>&lt;$0.01</b><span class="label">Monthly spend on my pipeline</span></div>
-      <div class="stat reveal in"><b>2027</b><span class="label">Graduation year</span></div>
+      <div class="stat reveal"><b><span class="count" data-to="2">0</span></b><span class="label">Live cloud projects</span></div>
+      <div class="stat reveal"><b><span class="count" data-to="9">0</span>+</b><span class="label">Cloud services in production</span></div>
+      <div class="stat reveal"><b>&lt;$0.01</b><span class="label">Monthly infrastructure spend</span></div>
+      <div class="stat reveal"><b>2027</b><span class="label">Graduation year</span></div>
     </div>
   </section>
 
   <div class="ribbon" aria-hidden="true">
-    <span>OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; JUNIOR CLOUD ENGINEER &#183; CLOUD OPERATIONS &#183; MULTI CLOUD MINDSET &#183; BUILT ON AWS, READY FOR ANY CLOUD &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183; OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; JUNIOR CLOUD ENGINEER &#183; CLOUD OPERATIONS &#183; MULTI CLOUD MINDSET &#183; BUILT ON AWS, READY FOR ANY CLOUD &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183;</span>
+    <div class="ribbon-track">
+      <span>OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; NETWORKING &amp; INFRASTRUCTURE &#183; CLOUD OPERATIONS &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183; SECURITY FIRST &#183; COST AWARE &#183;&nbsp;</span>
+      <span>OPEN TO ENTRY LEVEL ROLES &#183; CLOUD SUPPORT ASSOCIATE &#183; NETWORKING &amp; INFRASTRUCTURE &#183; CLOUD OPERATIONS &#183; IT SUPPORT &#183; TECHNICAL SUPPORT &#183; SECURITY FIRST &#183; COST AWARE &#183;&nbsp;</span>
+    </div>
   </div>
 
   <!-- ===== PROJECTS  EDIT-PROJECTS ===== -->
-  <section id="projects" class="wrap">
+  <section id="projects" class="wrap cv">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-.4-9A6 6 0 1 0 6 15.7"/><path d="m12 12 0 9"/><path d="m8.5 17.5 3.5 3.5 3.5-3.5"/></svg></span>
       <h2>Cloud projects</h2>
     </div>
+    <p class="lead reveal">Both systems below run live, right now, in a real production account. Not demos, not screenshots.</p>
 
     <article class="project reveal">
+      <div class="proj-meta"><span class="ptag">SECURITY</span><span class="ptag">EVENT DRIVEN</span><span class="ptag">SERVERLESS</span><span class="plive"><i aria-hidden="true"></i>ARMED</span></div>
       <h3>Real Time Root Login Alert System</h3>
       <span class="flow"><span class="step">CLOUDTRAIL</span> <span class="sep">&#8594;</span> <span class="step">EVENTBRIDGE</span> <span class="sep">&#8594;</span> <span class="step">SNS</span></span>
-      <p>A serverless security system that spots root account logins the moment they happen. CloudTrail tracks the login events, EventBridge matches the pattern, and SNS sends an instant email alert. No more manual checks. The same event driven pattern exists on every major cloud.</p>
+      <p>A serverless tripwire around the most powerful login in any cloud account. CloudTrail records every root login, an EventBridge rule matches the event the moment it lands, and SNS pushes an email alert straight to my inbox within seconds. No polling, no dashboards, no manual checks.</p>
+      <ul class="arrows plist">
+        <li>Implements a core CIS benchmark security control: alert on any root account use</li>
+        <li>Fully serverless and event driven, nothing to patch and effectively zero cost at idle</li>
+        <li>The same rule and target pattern extends to any account activity worth watching</li>
+      </ul>
+      <a class="ask" href="#contact">Ask me how it works <span class="arr">&#8594;</span></a>
     </article>
 
     <article class="project reveal">
+      <div class="proj-meta"><span class="ptag">DELIVERY</span><span class="ptag">STORAGE</span><span class="ptag">FINOPS</span><span class="plive"><i aria-hidden="true"></i>LIVE</span></div>
       <h3>Secure Global Document Delivery Pipeline</h3>
       <span class="flow"><span class="step">S3</span> <span class="sep">&#8594;</span> <span class="step">CLOUDFRONT</span> <span class="sep">&#183;</span> <span class="step">S3 VERSIONING</span> <span class="sep">&#183;</span> <span class="step">AWS BUDGETS</span></span>
-      <p>A fast and secure content delivery network. Files live in S3 with public access blocked, served worldwide through CloudFront using Origin Access Control. S3 Versioning protects the files, and AWS Budgets keeps monthly spending under one cent. Object storage plus edge delivery plus cost alarms is a pattern every cloud provider shares.</p>
+      <p>A locked down CDN for documents. Files live in a private S3 bucket with every form of public access blocked, and CloudFront serves them worldwide through Origin Access Control, so the edge is the only door in. S3 Versioning protects each file against overwrites and deletion, while AWS Budgets holds the whole pipeline under one cent a month.</p>
+      <ul class="arrows plist">
+        <li>Zero public buckets. The origin is reachable only through the CDN</li>
+        <li>Point in time recovery for every file via S3 Versioning</li>
+        <li>Global edge delivery for less than $0.01 a month, enforced by a budget alarm</li>
+      </ul>
+      <a class="ask" href="#contact">Ask me about the architecture <span class="arr">&#8594;</span></a>
     </article>
   </section>
 
   <!-- ===== WHY HIRE ME ===== -->
-  <section id="why" class="wrap" aria-label="Why hire me">
+  <section id="why" class="wrap cv" aria-label="Why hire me">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
       <h2>Why hire me</h2>
@@ -534,28 +631,28 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
       <article class="proof-card reveal">
         <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
         <h3>Locked down by default</h3>
-        <p>Public access blocked on every bucket, Origin Access Control in front, versioning behind. Safe before fast.</p>
+        <p>Public access blocked on every bucket, Origin Access Control in front, versioning behind. I secure first, then ship.</p>
       </article>
       <article class="proof-card reveal">
         <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span>
-        <h3>Principles over providers</h3>
-        <p>Event rules, edge caching, identity controls and budget alarms exist on every major cloud. I built on AWS first, so I will not be lost on the second.</p>
+        <h3>Principles over platforms</h3>
+        <p>Event rules, edge caching, identity controls and budget alarms exist on every major cloud. New platform, new names, same ideas.</p>
       </article>
       <article class="proof-card reveal">
         <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16M6 17V9l4 3 4-6 4 5v6"/></svg></span>
         <h3>Built in production, not theory</h3>
-        <p>Everything on this page runs in a live cloud account, with AWS Cloud Practitioner in progress alongside it.</p>
+        <p>Everything here runs in a live production account, with a cloud certification in progress alongside it.</p>
       </article>
       <article class="proof-card reveal">
         <span class="proof-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13 5-2 14"/></svg></span>
         <h3>Ships complete, polished work</h3>
-        <p>This site is a project too: hand built, accessible, fast on any device, and measured with live visitor analytics you can see in the footer.</p>
+        <p>This site is a project too: hand coded, secure, accessible and fast, with live visitor analytics in the footer.</p>
       </article>
     </div>
   </section>
 
   <!-- ===== SKILLS  EDIT-CHIPS ===== -->
-  <section id="skills" class="wrap">
+  <section id="skills" class="wrap cv">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14 -1.5 7 5-3 5 3-1.5-7"/></svg></span>
       <h2>Skills and certifications</h2>
@@ -563,26 +660,31 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     <div class="skill-groups reveal">
       <div class="skill-group">
         <span class="label">What I practice</span>
-        <div class="chips"><span class="chip">Cloud Security</span><span class="chip">Serverless Architecture</span><span class="chip">FinOps</span><span class="chip">Cloud Operations</span><span class="chip">IT Support</span></div>
+        <div class="chips"><span class="chip">Cloud Security</span><span class="chip">Networking</span><span class="chip">Serverless Architecture</span><span class="chip">FinOps</span><span class="chip">Cloud Operations</span><span class="chip">IT Support</span></div>
       </div>
       <div class="skill-group">
         <span class="label">What I build with today</span>
-        <div class="chips"><span class="chip">AWS</span><span class="chip">CloudTrail</span><span class="chip">EventBridge</span><span class="chip">SNS</span><span class="chip">S3</span><span class="chip">CloudFront</span><span class="chip">S3 Versioning</span><span class="chip">AWS Budgets</span></div>
+        <div class="chips"><span class="chip">AWS</span><span class="chip">CloudTrail</span><span class="chip">EventBridge</span><span class="chip">SNS</span><span class="chip">S3</span><span class="chip">CloudFront</span><span class="chip">S3 Versioning</span><span class="chip">AWS Budgets</span><span class="chip">IAM</span><span class="chip">Cloudflare</span><span class="chip">Git &amp; GitHub</span></div>
       </div>
       <div class="skill-group">
-        <span class="label">Concepts that travel to any cloud</span>
-        <div class="chips"><span class="chip chip-travel">IAM &amp; Least Privilege</span><span class="chip chip-travel">Event Driven Automation</span><span class="chip chip-travel">Edge Delivery / CDN</span><span class="chip chip-travel">Object Storage &amp; Versioning</span><span class="chip chip-travel">Cost Governance</span><span class="chip chip-travel">Monitoring &amp; Alerting</span></div>
+        <span class="label">Concepts that travel to any platform</span>
+        <div class="chips"><span class="chip chip-travel">IAM &amp; Least Privilege</span><span class="chip chip-travel">Event Driven Automation</span><span class="chip chip-travel">Edge Delivery / CDN</span><span class="chip chip-travel">DNS &amp; TLS</span><span class="chip chip-travel">Object Storage &amp; Versioning</span><span class="chip chip-travel">Cost Governance</span><span class="chip chip-travel">Monitoring &amp; Alerting</span></div>
       </div>
     </div>
-    <p class="skill-note reveal"><strong>Platform flexible by design.</strong> Every pattern above has a direct twin on Microsoft Azure and Google Cloud. I learned the principles, not just one console, so switching providers means learning new names, not new ideas.</p>
+    <p class="skill-note reveal"><strong>Platform flexible by design.</strong> Every pattern above has a direct twin on Microsoft Azure, Google Cloud and beyond, and the same fundamentals run networks and infrastructure everywhere. I learned the principles, not just one console, so switching platforms means learning new names, not new ideas.</p>
+    <!-- EDIT-CERTS -->
     <div class="row reveal">
-      <strong>AWS Cloud Practitioner</strong>
+      <div><strong>AWS Certified Cloud Practitioner</strong><span class="label">Foundational cloud certification</span></div>
       <span class="pill">In progress</span>
+    </div>
+    <div class="row reveal">
+      <div><strong>AWS Solutions Architect Associate</strong><span class="label">Next on the roadmap</span></div>
+      <span class="pill">Target 2027</span>
     </div>
   </section>
 
   <!-- ===== EXPERIENCE ===== -->
-  <section id="experience" class="wrap">
+  <section id="experience" class="wrap cv">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
       <h2>Experience</h2>
@@ -592,16 +694,16 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
         <strong>Software Development Intern &#183; CodersCave</strong>
         <span class="label">Remote &#183; Sep 2023 to Oct 2023</span>
       </div>
-      <ul>
-        <li>Helped build and fix software applications to meet project goals and user needs</li>
-        <li>Worked closely with a remote team to add new features and make the software easier to use</li>
-        <li>Kept every daily task on schedule in a fast paced virtual environment</li>
+      <ul class="arrows">
+        <li>Built and debugged application features against real project requirements and user needs</li>
+        <li>Collaborated with a fully remote team to ship improvements that made the software easier to use</li>
+        <li>Delivered every assigned task on schedule in a fast paced virtual environment</li>
       </ul>
     </div>
   </section>
 
   <!-- ===== EDUCATION ===== -->
-  <section id="education" class="wrap">
+  <section id="education" class="wrap cv">
     <div class="section-head reveal">
       <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 10 5-10 5L2 9Z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg></span>
       <h2>Education</h2>
@@ -613,14 +715,19 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   </section>
 
   <!-- ===== GET IN TOUCH  EDIT-LINKS ===== -->
-  <section id="contact" class="closing wrap reveal" aria-label="Get in touch">
+  <section id="contact" class="closing wrap cv reveal" aria-label="Get in touch">
     <h2>Let's talk cloud.</h2>
-    <p>If you are hiring for cloud support, operations or a junior engineering seat, on AWS or any platform, I would love to talk. I reply fast.</p>
+    <p>Hiring for cloud support, networking, infrastructure or IT support? I would love to talk. I read everything and reply fast.</p>
     <div class="hero-actions">
-      <a class="btn magnetic" href="https://linkedin.com/in/mhkb2216" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span class="arr">&#8594;</span></a>
+      <a class="btn magnetic" href="https://linkedin.com/in/mhkb2216" target="_blank" rel="me noopener noreferrer">Connect on LinkedIn <span class="arr">&#8594;</span></a>
       <a class="btn btn-hello magnetic" href="mailto:mhkb2216@gmail.com">Say hello</a>
-      <a class="btn btn-ghost magnetic" href="https://github.com/mhkb2216" target="_blank" rel="noopener noreferrer">See my GitHub</a>
+      <a class="btn btn-ghost magnetic" href="https://github.com/mhkb2216" target="_blank" rel="me noopener noreferrer">See my GitHub</a>
     </div>
+    <p class="email-line">
+      <a class="email-text" href="mailto:mhkb2216@gmail.com">mhkb2216@gmail.com</a>
+      <button class="copy-btn" id="copyEmail" type="button" aria-label="Copy my email address to your clipboard"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span id="copyLabel">Copy</span></button>
+      <span class="sr-only" id="copyStatus" role="status" aria-live="polite"></span>
+    </p>
   </section>
 
 </main>
@@ -657,8 +764,8 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="mailto:mhkb2216@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/mhkb2216" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/mhkb2216" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/mhkb2216" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/mhkb2216" target="_blank" rel="me noopener noreferrer">GitHub</a>
       </nav>
     </div>
     <div class="foot-line"></div>
@@ -672,10 +779,12 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 
 <script>
 (function(){
+  'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
 
   /* Typing loop */
-  var phrases = ['cloud security','content delivery','cost control','serverless systems','cloud operations','multi cloud thinking','IT support','real projects'];
+  var phrases = ['cloud security','networking','content delivery','cost control','serverless systems','infrastructure','IT support','real projects'];
   var typed = document.getElementById('typed');
   if (typed && !reduced) {
     var pi = 0, ci = phrases[0].length, deleting = true;
@@ -745,7 +854,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
           } else {
             for (var j = 1; j < lines.length; j++) {
               (function(j){
-                setTimeout(function(){ lines[j].classList.add('on'); }, 230 * j);
+                setTimeout(function(){ lines[j].classList.add('on'); }, 220 * j);
               })(j);
             }
           }
@@ -779,7 +888,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   }
 
   /* Magnetic buttons (fine pointers only; touch devices skip this) */
-  if (matchMedia('(pointer:fine)').matches && !reduced) {
+  if (finePointer && !reduced) {
     document.querySelectorAll('.magnetic').forEach(function(btn){
       btn.addEventListener('mousemove', function(e){
         var r = btn.getBoundingClientRect();
@@ -793,7 +902,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 
   /* 3D tilt + cursor spotlight on proof cards (fine pointers only;
      on touch, the cards animate on scroll via CSS instead) */
-  if (matchMedia('(pointer:fine)').matches && !reduced) {
+  if (finePointer && !reduced) {
     document.querySelectorAll('.proof-card').forEach(function(card){
       card.addEventListener('mousemove', function(e){
         var r = card.getBoundingClientRect();
@@ -809,7 +918,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
 
   /* Hero pointer glow (desktop); on touch the glow drifts on its own */
   var hero = document.querySelector('.hero'), glow = document.getElementById('glow');
-  if (hero && glow && !reduced && matchMedia('(pointer:fine)').matches) {
+  if (hero && glow && !reduced && finePointer) {
     glow.style.animation = 'none';
     hero.addEventListener('mousemove', function(e){
       var r = hero.getBoundingClientRect();
@@ -848,7 +957,7 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
       return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
     }
     grab(base)
-      .catch(function(){ return grab('https://' + GC_CODE + '.goatcounter.com/counter//.json'); })
+      .catch(function(){ return grab('https://' + GC_CODE + '.goatcounter.com/counter/' + encodeURIComponent('/') + '.json'); })
       .then(function(n){
         if (n < 1) throw 0;
         if (sub) sub.hidden = false;
@@ -877,18 +986,23 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
       });
   })();
 
-  /* Scroll progress bar, header shadow, back-to-top */
+  /* Scroll progress bar, header shadow, back to top */
   var bar = document.getElementById('progress');
   var headerEl = document.querySelector('header');
   var toTop = document.getElementById('toTop');
+  var ticking = false;
   function onScroll(){
     var h = document.documentElement;
-    var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
-    bar.style.width = (p * 100) + '%';
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? h.scrollTop / max : 0;
+    if (bar) bar.style.width = (p * 100) + '%';
     if (headerEl) headerEl.classList.toggle('scrolled', h.scrollTop > 8);
     if (toTop) toTop.classList.toggle('show', h.scrollTop > 600);
+    ticking = false;
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
   onScroll();
   if (toTop) {
     toTop.addEventListener('click', function(){
@@ -900,15 +1014,52 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* Copy email to clipboard, with a fallback for older browsers */
+  var copyBtn = document.getElementById('copyEmail');
+  var copyLabel = document.getElementById('copyLabel');
+  var copyStatus = document.getElementById('copyStatus');
+  if (copyBtn) {
+    var EMAIL = 'mhkb2216@gmail.com';
+    var copyTimer;
+    var copyDone = function(ok){
+      copyBtn.classList.toggle('copied', ok);
+      if (copyLabel) copyLabel.textContent = ok ? 'Copied \u2713' : 'Copy failed';
+      if (copyStatus) copyStatus.textContent = ok ? 'Email address copied to clipboard' : 'Copy failed. The address is ' + EMAIL;
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function(){
+        copyBtn.classList.remove('copied');
+        if (copyLabel) copyLabel.textContent = 'Copy';
+        if (copyStatus) copyStatus.textContent = '';
+      }, 2400);
+    };
+    copyBtn.addEventListener('click', function(){
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(EMAIL).then(function(){ copyDone(true); }, function(){ copyDone(false); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = EMAIL;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-999px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(ta);
+        copyDone(ok);
+      }
+    });
+  }
+
   /* Mobile menu */
   var menuBtn = document.getElementById('menuBtn');
   var navList = document.getElementById('navList');
-  function closeMenu(){
-    navList.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    menuBtn.setAttribute('aria-label', 'Open menu');
-  }
   if (menuBtn && navList) {
+    var closeMenu = function(){
+      navList.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-label', 'Open menu');
+    };
     menuBtn.addEventListener('click', function(){
       var open = navList.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -916,6 +1067,9 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     });
     navList.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('click', function(e){
+      if (navList.classList.contains('open') && !e.target.closest('.nav')) closeMenu();
     });
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape' && navList.classList.contains('open')) { closeMenu(); menuBtn.focus(); }
@@ -929,7 +1083,11 @@ footer{border-top:1px solid var(--border);padding:var(--s5) 0 var(--s4)}
     var nio = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (e.isIntersecting) {
-          links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
+          links.forEach(function(l){
+            var on = l.getAttribute('href') === '#' + e.target.id;
+            l.classList.toggle('active', on);
+            if (on) { l.setAttribute('aria-current', 'true'); } else { l.removeAttribute('aria-current'); }
+          });
         }
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
